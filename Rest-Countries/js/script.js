@@ -4,7 +4,7 @@ container.setAttribute("class", "container");
 div1.setAttribute("class", "row");
 
 async function country() {
-  const response = await fetch("./public/all.json");
+  const response = await fetch("https://restcountries.com/v3.1/all");
   const data = await response.json();
   div1.innerHTML = "";
 
@@ -25,6 +25,8 @@ async function country() {
           </div>
         </div>`;
   }
+  var load=document.getElementById("loader")
+  load.style.display="none"
 }
 // <button class="button-85" role="button">Button 85</button>
 async function weather(lat, lon, id) {
@@ -35,7 +37,8 @@ async function weather(lat, lon, id) {
   const data1 = await response1.json();
 
   weatherreport.innerHTML = `<div class="card-text"><b><i>Weather : </i></b>${data1.weather[0].main}</div>
-    <div class="card-text"><b><i>Temperature : </i></b>${data1.main.temp} &#8451;</div>`;
+    <div class="card-text"><b><i>Temperature : </i></b>${data1.main.temp} &#8451;</div>
+    <div class="card-text"><b><i>Wind : </i></b>${data1.wind.speed} m/s</div>`;
 }
 
 document.body.appendChild(container);
